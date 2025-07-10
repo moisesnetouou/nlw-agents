@@ -11,5 +11,17 @@ GET {{baseUrl}}/rooms
 
 ###
 
+# Create room
+GET {{baseUrl}}/rooms
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Sala de teste",
+  "description": "Essa é uma sala de teste"
+}
+
+###
+
 # Get rooms questions
 GET {{baseUrl}}/rooms/id/questions
