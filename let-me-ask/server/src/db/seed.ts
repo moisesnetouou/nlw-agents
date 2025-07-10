@@ -7,7 +7,7 @@ await reset(db, schema)
 await seed(db, schema).refine((f) => {
   return {
     rooms: {
-      count: 20,
+      count: 5,
       columns: {
         name: f.companyName(),
         description: f.loremIpsum(),
@@ -21,4 +21,5 @@ await seed(db, schema).refine((f) => {
 
 await sql.end()
 
+// biome-ignore lint/suspicious/noConsole: check seeded
 console.log('Database seeded')
