@@ -1,6 +1,6 @@
 {
-  "id": "150f3419-4295-4256-8c14-eaa86c71e667",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "200b0440-fa63-4b5e-84a3-aa9994b710c8",
+  "prevId": "150f3419-4295-4256-8c14-eaa86c71e667",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -31,7 +31,7 @@
           "name": "answer",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "created_at": {
           "name": "created_at",
