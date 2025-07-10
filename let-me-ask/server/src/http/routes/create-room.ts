@@ -5,30 +5,33 @@ import { schema } from '../../db/schema/index.ts'
 
 export const createRoomRoute: FastifyPluginCallbackZod = (app) => {
   app.post(
-    '/rooms',
+    '/rooms/:roomId/questions',
     {
       schema: {
+        params: z.object({
+          roomId: z.string(),
+        }),
         body: z.object({
-          name: z.string().min(1),
-          description: z.string().optional(),
+          question: z.string().min(1),
         }),
       },
     },
     async (request, reply) => {
-      const { name, description } = request.body
+      const { roomId } = request.params
+      const { question } = request.body
 
       const result = await db
-        .insert(schema.rooms)
-        .values({ name, description })
+        .insert(schema.questions)
+        .values({ roomId, question })
         .returning()
 
-      const insertedRoom = result[0]
+      const insertedQuestion = result[0]
 
-      if (!insertedRoom) {
+      if (!insertedQuestion) {
         throw new Error('Failed to create room')
       }
 
-      return reply.status(201).send({ roomId: insertedRoom.id })
+      return reply.status(201).send({ roomId: insertedQuestion.id })
     }
   )
 }

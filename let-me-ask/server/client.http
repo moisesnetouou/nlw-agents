@@ -7,12 +7,14 @@ GET {{baseUrl}}/health
 ###
 
 # Get rooms
+# @name getRooms
 GET {{baseUrl}}/rooms
 
 ###
 
 # Create room
-GET {{baseUrl}}/rooms
+# @name createRoom
+POST {{baseUrl}}/rooms
 Accept: application/json
 Content-Type: application/json
 
@@ -23,5 +25,24 @@ Content-Type: application/json
 
 ###
 
+@roomId = {{createRoom.response.body.$.[0].id}}
+
+###
+
 # Get rooms questions
-GET {{baseUrl}}/rooms/id/questions
+# @name getRoomQuestions
+GET {{baseUrl}}/rooms/{{roomId}}/questions
+
+###
+
+# Create question
+# @name createQuestion
+POST {{baseUrl}}/rooms/{{roomId}}/questions
+Accept: application/json
+Content-Type: application/json
+
+{
+  "question": "Qual o conceito de X dentro de Y?",
+}
+
+###
