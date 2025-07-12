@@ -2,9 +2,14 @@ import { reset, seed } from 'drizzle-seed'
 import { db, sql } from './connection.ts'
 import { schema } from './schema/index.ts'
 
-await reset(db, schema)
+const safeSeedSchema = {
+  rooms: schema.rooms,
+  questions: schema.questions,
+}
 
-await seed(db, schema).refine((f) => {
+await reset(db, safeSeedSchema)
+
+await seed(db, safeSeedSchema).refine((f) => {
   return {
     rooms: {
       count: 5,
