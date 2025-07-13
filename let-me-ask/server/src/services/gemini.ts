@@ -63,7 +63,7 @@ export async function generateAnswer(
 
     INSTRUÇÕES:
     - Use apenas informações contidas no contexto enviado;
-    - Se a resposta não for enviada no contexto, apenas responda que não possui informações suficiente para responder;
+    - Se a resposta não for enviada no contexto, apenas responda com o exato texto "Não possuo informações suficiente para responder";
     - Seja objetivo;
     - Mantenha um tom educativo e profissional;
     - Cite trechos relevantes do contexto se apropriado;
